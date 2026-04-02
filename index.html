@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>娲涘厠鐜嬪浗锛氫笘鐣?- 绮剧伒瀵规垬鏀荤暐绔?/title>
+    <title>洛克王国：世界 - 精灵对战攻略站</title>
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         :root {
@@ -279,83 +279,83 @@
 <body>
     <div class="loading" id="loading">
         <div class="loading-spinner"></div>
-        <p style="margin-top: 1rem; color: var(--text-muted);">鍔犺浇鏁版嵁涓?..</p>
+        <p style="margin-top: 1rem; color: var(--text-muted);">加载数据中...</p>
     </div>
 
     <nav class="navbar">
         <div class="nav-container">
-            <div class="logo">馃悏 娲涘厠鐜嬪浗锛氫笘鐣屾敾鐣ョ珯</div>
+            <div class="logo">🐉 洛克王国：世界攻略站</div>
             <div style="display: flex; align-items: center;">
                 <span class="last-update" id="lastUpdate"></span>
-                <button class="refresh-btn" onclick="loadData()">馃攧 鍒锋柊鏁版嵁</button>
+                <button class="refresh-btn" onclick="loadData()">🔄 刷新数据</button>
             </div>
         </div>
     </nav>
 
     <section class="hero">
-        <h1>鎺㈢储娲涘厠鐜嬪浗锛氫笘鐣?/h1>
-        <p style="color: var(--text-muted);">鏁版嵁鍙仈缃戞洿鏂帮紝闅忔椂鑾峰彇鏈€鏂版敾鐣?/p>
+        <h1>探索洛克王国：世界</h1>
+        <p style="color: var(--text-muted);">数据可联网更新，随时获取最新攻略</p>
     </section>
 
     <div class="main-container">
         <aside class="sidebar">
             <div class="sidebar-section">
-                <h3>馃搵 蹇€熷鑸?/h3>
+                <h3>📋 快速导航</h3>
                 <ul style="list-style: none; margin-top: 1rem;" id="typeMenu">
-                    <li style="margin: 0.5rem 0;"><a href="#" onclick="filterPets('all')" style="color: var(--text);">鍏ㄩ儴绮剧伒</a></li>
+                    <li style="margin: 0.5rem 0;"><a href="#" onclick="filterPets('all')" style="color: var(--text);">全部精灵</a></li>
                 </ul>
             </div>
             <div class="sidebar-section">
-                <h3>馃弳 鐑棬闃靛</h3>
+                <h3>🏆 热门阵容</h3>
                 <ul style="list-style: none; margin-top: 1rem;" id="teamMenu"></ul>
             </div>
         </aside>
 
         <main class="content" id="mainContent">
             <div class="error-message" id="errorMessage" style="display: none;">
-                鏁版嵁鍔犺浇澶辫触锛岃妫€鏌ョ綉缁滆繛鎺ユ垨鍒锋柊椤甸潰閲嶈瘯
+                数据加载失败，请检查网络连接或刷新页面重试
             </div>
 
             <div class="tabs">
-                <button class="tab active" onclick="switchTab(this, 'pets')">馃 绮剧伒鍥鹃壌</button>
-                <button class="tab" onclick="switchTab(this, 'locations')">馃搷 鍒锋柊鍦扮偣</button>
-                <button class="tab" onclick="switchTab(this, 'typeChart')">鈿栵笍 灞炴€у厠鍒?/button>
-                <button class="tab" onclick="switchTab(this, 'pvp')">鈿旓笍 瀵规垬鏀荤暐</button>
-                <button class="tab" onclick="switchTab(this, 'teams')">馃懃 闃靛鎺ㄨ崘</button>
+                <button class="tab active" onclick="switchTab(this, 'pets')">🦄 精灵图鉴</button>
+                <button class="tab" onclick="switchTab(this, 'locations')">📍 刷新地点</button>
+                <button class="tab" onclick="switchTab(this, 'typeChart')">⚖️ 属性克制</button>
+                <button class="tab" onclick="switchTab(this, 'pvp')">⚔️ 对战攻略</button>
+                <button class="tab" onclick="switchTab(this, 'teams')">👥 阵容推荐</button>
             </div>
 
             <div id="pets" class="tab-content active">
-                <h2 style="margin-bottom: 1.5rem;">馃 绮剧伒鍥鹃壌</h2>
+                <h2 style="margin-bottom: 1.5rem;">🦄 精灵图鉴</h2>
                 <div class="pet-grid" id="petGrid"></div>
             </div>
 
             <div id="locations" class="tab-content">
-                <h2 style="margin-bottom: 1.5rem;">馃搷 鍦板浘鍖哄煙</h2>
+                <h2 style="margin-bottom: 1.5rem;">📍 地图区域</h2>
                 <div id="locationsList"></div>
             </div>
 
             <div id="typeChart" class="tab-content">
-                <h2 style="margin-bottom: 1.5rem;">鈿栵笍 灞炴€у厠鍒惰〃</h2>
+                <h2 style="margin-bottom: 1.5rem;">⚖️ 属性克制表</h2>
                 <div id="typeChartContent"></div>
             </div>
 
             <div id="pvp" class="tab-content">
-                <h2 style="margin-bottom: 1.5rem;">鈿旓笍 瀵规垬鏀荤暐</h2>
+                <h2 style="margin-bottom: 1.5rem;">⚔️ 对战攻略</h2>
                 <div id="tipsContent"></div>
             </div>
 
             <div id="teams" class="tab-content">
-                <h2 style="margin-bottom: 1.5rem;">馃懃 鎺ㄨ崘闃靛</h2>
+                <h2 style="margin-bottom: 1.5rem;">👥 推荐阵容</h2>
                 <div id="teamsContent"></div>
             </div>
         </main>
     </div>
 
-    <!-- 绮剧伒璇︽儏寮圭獥 -->
+    <!-- 精灵详情弹窗 -->
     <div class="modal" id="petModal">
         <div class="modal-content">
             <div class="modal-header">
-                <h2 id="modalTitle">绮剧伒璇︽儏</h2>
+                <h2 id="modalTitle">精灵详情</h2>
                 <button class="close-btn" onclick="closeModal()">&times;</button>
             </div>
             <div id="modalBody"></div>
@@ -365,14 +365,14 @@
     <script>
         let gameData = null;
         const typeNames = { 
-            fire: '鐏?, water: '姘?, grass: '鑽?, electric: '鐢?, 
-            ice: '鍐?, dragon: '榫?, dark: '鏆?, light: '鍏?,
-            ground: '鍦伴潰', rock: '宀╃煶', flying: '椋炶', poison: '姣?,
-            fighting: '鏍兼枟', fairy: '濡栫簿'
+            fire: '火', water: '水', grass: '草', electric: '电', 
+            ice: '冰', dragon: '龙', dark: '暗', light: '光',
+            ground: '地面', rock: '岩石', flying: '飞行', poison: '毒',
+            fighting: '格斗', fairy: '妖精'
         };
-        const rarityColors = { '鏅€?: '#95A5A6', '绋€鏈?: '#3498DB', '鍙茶瘲': '#9B59B6', '浼犺': '#F39C12' };
+        const rarityColors = { '普通': '#95A5A6', '稀有': '#3498DB', '史诗': '#9B59B6', '传说': '#F39C12' };
 
-        // 鍔犺浇鏁版嵁
+        // 加载数据
         async function loadData() {
             const loading = document.getElementById('loading');
             const errorMsg = document.getElementById('errorMessage');
@@ -381,19 +381,22 @@
             errorMsg.style.display = 'none';
             
             try {
-                // 娣诲姞鏃堕棿鎴抽槻姝㈢紦瀛?                const timestamp = new Date().getTime();
+                // 添加时间戳防止缓存
+                const timestamp = new Date().getTime();
                 const response = await fetch(`data.json?t=${timestamp}`);
                 
                 if (!response.ok) throw new Error('Network response was not ok');
                 
                 gameData = await response.json();
                 
-                // 鏇存柊鏈€鍚庢洿鏂版椂闂?                document.getElementById('lastUpdate').textContent = 
-                    '鏇存柊浜? ' + new Date().toLocaleString('zh-CN', { 
+                // 更新最后更新时间
+                document.getElementById('lastUpdate').textContent = 
+                    '更新于: ' + new Date().toLocaleString('zh-CN', { 
                         month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' 
                     });
                 
-                // 娓叉煋鎵€鏈夊唴瀹?                renderTypeMenu();
+                // 渲染所有内容
+                renderTypeMenu();
                 renderTeamMenu();
                 renderPets();
                 renderLocations();
@@ -401,21 +404,23 @@
                 renderTips();
                 renderTeams();
                 
-                // 淇濆瓨鍒版湰鍦板瓨鍌ㄤ綔涓哄浠?                localStorage.setItem('luokeData', JSON.stringify(gameData));
+                // 保存到本地存储作为备份
+                localStorage.setItem('luokeData', JSON.stringify(gameData));
                 localStorage.setItem('luokeDataTime', Date.now());
                 
             } catch (error) {
-                console.error('鍔犺浇澶辫触:', error);
+                console.error('加载失败:', error);
                 
-                // 灏濊瘯浠庢湰鍦板瓨鍌ㄥ姞杞?                const cached = localStorage.getItem('luokeData');
+                // 尝试从本地存储加载
+                const cached = localStorage.getItem('luokeData');
                 if (cached) {
                     gameData = JSON.parse(cached);
                     renderAll();
-                    errorMsg.innerHTML = '鈿狅笍 浣跨敤缂撳瓨鏁版嵁锛堢绾挎ā寮忥級<br><small>涓婃鏇存柊: ' + 
+                    errorMsg.innerHTML = '⚠️ 使用缓存数据（离线模式）<br><small>上次更新: ' + 
                         new Date(parseInt(localStorage.getItem('luokeDataTime'))).toLocaleString() + '</small>';
                     errorMsg.style.display = 'block';
                 } else {
-                    errorMsg.textContent = '鏁版嵁鍔犺浇澶辫触锛岃妫€鏌ョ綉缁滆繛鎺ユ垨鍒锋柊椤甸潰閲嶈瘯';
+                    errorMsg.textContent = '数据加载失败，请检查网络连接或刷新页面重试';
                     errorMsg.style.display = 'block';
                 }
             } finally {
@@ -433,15 +438,16 @@
             renderTeams();
         }
 
-        // 娓叉煋灞炴€ц彍鍗?        function renderTypeMenu() {
+        // 渲染属性菜单
+        function renderTypeMenu() {
             const menu = document.getElementById('typeMenu');
             const types = [...new Set(gameData.pets.flatMap(p => p.types))];
             
-            menu.innerHTML = '<li style="margin: 0.5rem 0;"><a href="#" onclick="filterPets(\'all\')" style="color: var(--text);">鍏ㄩ儴绮剧伒</a></li>' +
-                types.map(t => `<li style="margin: 0.5rem 0;"><a href="#" onclick="filterPets('${t}')" style="color: var(--text-muted);">${typeNames[t] || t}绯?/a></li>`).join('');
+            menu.innerHTML = '<li style="margin: 0.5rem 0;"><a href="#" onclick="filterPets(\'all\')" style="color: var(--text);">全部精灵</a></li>' +
+                types.map(t => `<li style="margin: 0.5rem 0;"><a href="#" onclick="filterPets('${t}')" style="color: var(--text-muted);">${typeNames[t] || t}系</a></li>`).join('');
         }
 
-        // 娓叉煋闃靛鑿滃崟
+        // 渲染阵容菜单
         function renderTeamMenu() {
             const menu = document.getElementById('teamMenu');
             menu.innerHTML = gameData.teams.map(t => 
@@ -449,7 +455,7 @@
             ).join('');
         }
 
-        // 娓叉煋绮剧伒
+        // 渲染精灵
         function renderPets(filter = 'all') {
             const grid = document.getElementById('petGrid');
             const filtered = filter === 'all' ? gameData.pets : gameData.pets.filter(p => p.types.includes(filter));
@@ -461,19 +467,19 @@
                     <div style="margin-bottom: 0.5rem;">
                         ${pet.types.map(t => `<span class="type-badge type-${t}">${typeNames[t]}</span>`).join('')}
                     </div>
-                    <div style="font-size: 0.85rem; color: var(--text-muted);">馃搷 ${pet.location}</div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">📍 ${pet.location}</div>
                     <div style="font-size: 0.8rem; color: ${rarityColors[pet.rarity]}; margin-top: 5px;">${pet.rarity}</div>
                 </div>
             `).join('');
         }
 
-        // 娓叉煋鍦扮偣
+        // 渲染地点
         function renderLocations() {
             const container = document.getElementById('locationsList');
             container.innerHTML = `
                 <table class="data-table">
                     <thead>
-                        <tr><th>鍦扮偣</th><th>鎻忚堪</th><th>闅惧害</th><th>绮剧伒</th></tr>
+                        <tr><th>地点</th><th>描述</th><th>难度</th><th>精灵</th></tr>
                     </thead>
                     <tbody>
                         ${gameData.locations.map(loc => {
@@ -492,7 +498,7 @@
             `;
         }
 
-        // 娓叉煋灞炴€у厠鍒惰〃
+        // 渲染属性克制表
         function renderTypeChart() {
             const container = document.getElementById('typeChartContent');
             const types = Object.keys(gameData.typeChart);
@@ -500,7 +506,7 @@
             container.innerHTML = `
                 <table class="data-table">
                     <thead>
-                        <tr><th>灞炴€?/th><th>鍏嬪埗</th><th>琚厠鍒?/th><th>鎶垫姉</th><th>寮辩偣</th></tr>
+                        <tr><th>属性</th><th>克制</th><th>被克制</th><th>抵抗</th><th>弱点</th></tr>
                     </thead>
                     <tbody>
                         ${types.map(t => {
@@ -520,16 +526,17 @@
             `;
         }
 
-        // 娓叉煋鎶€宸?        function renderTips() {
+        // 渲染技巧
+        function renderTips() {
             const container = document.getElementById('tipsContent');
             container.innerHTML = `
                 <div class="team-build">
-                    <h3>馃幆 瀵规垬鏈哄埗</h3>
-                    <p style="color: var(--text-muted);">3v3杞崲鍒讹紝鍚堢悊鍒╃敤灞炴€у厠鍒跺叧绯?/p>
+                    <h3>🎯 对战机制</h3>
+                    <p style="color: var(--text-muted);">3v3轮换制，合理利用属性克制关系</p>
                 </div>
                 <table class="data-table">
                     <thead>
-                        <tr><th>鎶€宸?/th><th>璇存槑</th><th>閫傜敤鍦烘櫙</th></tr>
+                        <tr><th>技巧</th><th>说明</th><th>适用场景</th></tr>
                     </thead>
                     <tbody>
                         ${gameData.tips.map(tip => `
@@ -544,7 +551,7 @@
             `;
         }
 
-        // 娓叉煋闃靛
+        // 渲染阵容
         function renderTeams() {
             const container = document.getElementById('teamsContent');
             container.innerHTML = gameData.teams.map(team => `
@@ -566,7 +573,7 @@
             `).join('');
         }
 
-        // 鏄剧ず绮剧伒璇︽儏
+        // 显示精灵详情
         function showPetDetail(id) {
             const pet = gameData.pets.find(p => p.id === id);
             if (!pet) return;
@@ -583,21 +590,21 @@
                 </div>
                 
                 <div style="margin-bottom: 1.5rem;">
-                    <h4 style="margin-bottom: 0.5rem;">馃搷 鍑虹幇淇℃伅</h4>
-                    <p>鍦扮偣: ${pet.location}</p>
-                    <p>鏃堕棿: ${pet.time}</p>
+                    <h4 style="margin-bottom: 0.5rem;">📍 出现信息</h4>
+                    <p>地点: ${pet.location}</p>
+                    <p>时间: ${pet.time}</p>
                 </div>
                 
                 <div style="margin-bottom: 1.5rem;">
-                    <h4 style="margin-bottom: 0.5rem;">馃搳 绉嶆棌鍊?/h4>
+                    <h4 style="margin-bottom: 0.5rem;">📊 种族值</h4>
                     <div class="stat-bar"><span>HP</span><div class="bar"><div class="fill" style="width: ${pet.stats.hp}%"></div></div><span>${pet.stats.hp}</span></div>
-                    <div class="stat-bar"><span>鏀诲嚮</span><div class="bar"><div class="fill" style="width: ${pet.stats.attack}%"></div></div><span>${pet.stats.attack}</span></div>
-                    <div class="stat-bar"><span>闃插尽</span><div class="bar"><div class="fill" style="width: ${pet.stats.defense}%"></div></div><span>${pet.stats.defense}</span></div>
-                    <div class="stat-bar"><span>閫熷害</span><div class="bar"><div class="fill" style="width: ${pet.stats.speed}%"></div></div><span>${pet.stats.speed}</span></div>
+                    <div class="stat-bar"><span>攻击</span><div class="bar"><div class="fill" style="width: ${pet.stats.attack}%"></div></div><span>${pet.stats.attack}</span></div>
+                    <div class="stat-bar"><span>防御</span><div class="bar"><div class="fill" style="width: ${pet.stats.defense}%"></div></div><span>${pet.stats.defense}</span></div>
+                    <div class="stat-bar"><span>速度</span><div class="bar"><div class="fill" style="width: ${pet.stats.speed}%"></div></div><span>${pet.stats.speed}</span></div>
                 </div>
                 
                 <div>
-                    <h4 style="margin-bottom: 0.5rem;">鈿旓笍 鎶€鑳?/h4>
+                    <h4 style="margin-bottom: 0.5rem;">⚔️ 技能</h4>
                     <div class="skill-list">
                         ${pet.skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}
                     </div>
@@ -632,14 +639,15 @@
             document.getElementById(tabId).classList.add('active');
         }
 
-        // 鐐瑰嚮寮圭獥澶栭儴鍏抽棴
+        // 点击弹窗外部关闭
         document.getElementById('petModal').addEventListener('click', (e) => {
             if (e.target.id === 'petModal') closeModal();
         });
 
-        // 鍒濆鍖栧姞杞?        loadData();
+        // 初始化加载
+        loadData();
 
-        // 姣?鍒嗛挓鑷姩鍒锋柊
+        // 每5分钟自动刷新
         setInterval(loadData, 5 * 60 * 1000);
     </script>
 </body>

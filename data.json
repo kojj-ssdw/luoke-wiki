@@ -36,114 +36,6 @@
       "description": "草系初始精灵，回复能力强",
       "skills": ["种子炸弹", "光合作用", "藤鞭", "叶刃"],
       "stats": { "hp": 85, "attack": 70, "defense": 75, "speed": 80 }
-    },
-    {
-      "id": 4,
-      "name": "霹雳球",
-      "types": ["electric"],
-      "location": "雷鸣峡谷",
-      "time": "雨天",
-      "rarity": "稀有",
-      "icon": "⚡",
-      "description": "电系稀有精灵，速度极快",
-      "skills": ["电击", "十万伏特", "雷电拳", "打雷"],
-      "stats": { "hp": 70, "attack": 85, "defense": 55, "speed": 110 }
-    },
-    {
-      "id": 5,
-      "name": "上古战龙",
-      "types": ["dragon"],
-      "location": "龙脉山脉",
-      "time": "夜晚",
-      "rarity": "史诗",
-      "icon": "🐲",
-      "description": "龙系史诗精灵，综合实力强",
-      "skills": ["龙爪", "龙之怒", "龙鳞守护", "龙之波动"],
-      "stats": { "hp": 100, "attack": 110, "defense": 85, "speed": 75 }
-    },
-    {
-      "id": 6,
-      "name": "冰龙王",
-      "types": ["ice", "dragon"],
-      "location": "冰封雪原",
-      "time": "雪天",
-      "rarity": "史诗",
-      "icon": "❄️",
-      "description": "冰龙双属性，控场能力强",
-      "skills": ["冰冻牙", "暴风雪", "龙之舞", "绝对零度"],
-      "stats": { "hp": 90, "attack": 95, "defense": 90, "speed": 70 }
-    },
-    {
-      "id": 7,
-      "name": "烈火战神",
-      "types": ["fire"],
-      "location": "熔岩核心",
-      "time": "全天",
-      "rarity": "传说",
-      "icon": "🔥",
-      "description": "火系传说精灵，爆发伤害极高",
-      "skills": ["火焰漩涡", "大字爆", "烈焰冲锋", "神圣之火"],
-      "stats": { "hp": 85, "attack": 130, "defense": 70, "speed": 95 }
-    },
-    {
-      "id": 8,
-      "name": "深海霸主",
-      "types": ["water"],
-      "location": "深海遗迹",
-      "time": "夜晚",
-      "rarity": "史诗",
-      "icon": "🌊",
-      "description": "水系史诗精灵，血量极高",
-      "skills": ["水炮", "海啸", "潜水", "深海重压"],
-      "stats": { "hp": 120, "attack": 85, "defense": 95, "speed": 50 }
-    },
-    {
-      "id": 9,
-      "name": "森林守护者",
-      "types": ["grass"],
-      "location": "古树森林",
-      "time": "白天",
-      "rarity": "稀有",
-      "icon": "🌳",
-      "description": "草系稀有精灵，擅长辅助",
-      "skills": ["寄生种子", "治愈波动", "森林守护", "自然之力"],
-      "stats": { "hp": 100, "attack": 65, "defense": 85, "speed": 65 }
-    },
-    {
-      "id": 10,
-      "name": "雷霆狮王",
-      "types": ["electric"],
-      "location": "雷霆高原",
-      "time": "雷暴",
-      "rarity": "史诗",
-      "icon": "🦁",
-      "description": "电系史诗精灵，物理攻击强",
-      "skills": ["雷电牙", "疯狂伏特", "雷电铠甲", "雷神之怒"],
-      "stats": { "hp": 80, "attack": 115, "defense": 70, "speed": 100 }
-    },
-    {
-      "id": 11,
-      "name": "月影精灵",
-      "types": ["dark"],
-      "location": "暗影沼泽",
-      "time": "夜晚",
-      "rarity": "稀有",
-      "icon": "🌙",
-      "description": "暗系稀有精灵，擅长削弱",
-      "skills": ["暗影爪", "恐惧视线", "黑夜魔影", "月之诅咒"],
-      "stats": { "hp": 75, "attack": 90, "defense": 65, "speed": 95 }
-    },
-    {
-      "id": 12,
-      "name": "光之天使",
-      "types": ["light"],
-      "location": "天空之城",
-      "time": "白天",
-      "rarity": "传说",
-      "icon": "✨",
-      "description": "光系传说精灵，最强辅助",
-      "skills": ["圣光", "天使祝福", "光之壁", "神圣裁决"],
-      "stats": { "hp": 90, "attack": 75, "defense": 100, "speed": 85 }
     }
   ],
   "teams": [
@@ -156,54 +48,19 @@
         { "name": "水蓝蓝", "role": "水系坦克", "icon": "💧" },
         { "name": "喵喵", "role": "草系辅助", "icon": "🌿" }
       ]
-    },
-    {
-      "id": "pvp",
-      "name": "PVP竞技队",
-      "description": "上古战龙高攻高血，冰龙王控场减速，霹雳球先手收割",
-      "pets": [
-        { "name": "上古战龙", "role": "龙系核心", "icon": "🐲" },
-        { "name": "冰龙王", "role": "冰系控场", "icon": "❄️" },
-        { "name": "霹雳球", "role": "电系速攻", "icon": "⚡" }
-      ]
-    },
-    {
-      "id": "boss",
-      "name": "BOSS挑战队",
-      "description": "针对BOSS高血量设计，月影精灵先手上减防，烈火战神爆发输出",
-      "pets": [
-        { "name": "烈火战神", "role": "火系爆发", "icon": "🔥" },
-        { "name": "月影精灵", "role": "暗系削弱", "icon": "🌙" },
-        { "name": "光之天使", "role": "光系辅助", "icon": "✨" }
-      ]
     }
   ],
   "locations": [
     { "name": "烈焰火山", "description": "火系精灵聚集地，温度极高", "difficulty": "简单" },
     { "name": "水晶湖", "description": "清澈见底的湖泊，水系精灵家园", "difficulty": "简单" },
-    { "name": "青青草原", "description": "广阔的草原，草系精灵出没", "difficulty": "简单" },
-    { "name": "雷鸣峡谷", "description": "常年雷电交加，电系精灵活跃", "difficulty": "中等" },
-    { "name": "龙脉山脉", "description": "古老的山脉，传说有龙族栖息", "difficulty": "困难" },
-    { "name": "冰封雪原", "description": "极寒之地，冰系精灵的领地", "difficulty": "困难" },
-    { "name": "熔岩核心", "description": "火山最深处，传说级火系精灵出没", "difficulty": "极难" },
-    { "name": "深海遗迹", "description": "沉没的古代城市，神秘水系精灵", "difficulty": "困难" },
-    { "name": "古树森林", "description": "千年古树环绕，草系精灵圣地", "difficulty": "中等" },
-    { "name": "雷霆高原", "description": "高原上的雷暴区，电系王者领地", "difficulty": "困难" },
-    { "name": "暗影沼泽", "description": "阴暗潮湿的沼泽，暗系精灵藏身", "difficulty": "中等" },
-    { "name": "天空之城", "description": "漂浮在云端的古城，光系精灵居所", "difficulty": "极难" }
+    { "name": "青青草原", "description": "广阔的草原，草系精灵出没", "difficulty": "简单" }
   ],
   "tips": [
-    { "title": "属性预判", "content": "根据对手首发精灵预判阵容，提前切换克制属性", "scene": "开局阶段" },
-    { "title": "速度线控制", "content": "利用速度快的精灵先手控场或输出", "scene": "全场适用" },
-    { "title": "残血收割", "content": "保留高爆发技能，等对手残血时一击必杀", "scene": "中后盘" },
-    { "title": "联防体系", "content": "利用属性抗性互相切换，消耗对手PP值", "scene": "持久战" }
+    { "title": "属性预判", "content": "根据对手首发精灵预判阵容，提前切换克制属性", "scene": "开局阶段" }
   ],
   "typeChart": {
-    "fire": { "strong": ["grass"], "weak": ["water"], "resist": ["fire", "grass", "ice"], "vulnerable": ["water", "ground", "rock"] },
+    "fire": { "strong": ["grass"], "weak": ["water"], "resist": ["fire", "grass", "ice"], "vulnerable": ["water"] },
     "water": { "strong": ["fire"], "weak": ["grass", "electric"], "resist": ["fire", "water", "ice"], "vulnerable": ["grass", "electric"] },
-    "grass": { "strong": ["water"], "weak": ["fire", "ice"], "resist": ["water", "grass", "electric"], "vulnerable": ["fire", "ice", "poison"] },
-    "electric": { "strong": ["water"], "weak": ["ground"], "resist": ["electric", "flying"], "vulnerable": ["ground"] },
-    "ice": { "strong": ["grass", "dragon"], "weak": ["fire"], "resist": ["ice"], "vulnerable": ["fire", "fighting", "rock"] },
-    "dragon": { "strong": ["dragon"], "weak": ["ice", "dragon"], "resist": ["fire", "water", "grass", "electric"], "vulnerable": ["ice", "dragon", "fairy"] }
+    "grass": { "strong": ["water"], "weak": ["fire", "ice"], "resist": ["water", "grass", "electric"], "vulnerable": ["fire", "ice", "poison"] }
   }
 }

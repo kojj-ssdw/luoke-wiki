@@ -1,0 +1,208 @@
+{
+  "pets": [
+    {
+      "id": 1,
+      "name": "鐏姳",
+      "types": ["fire"],
+      "location": "鐑堢劙鐏北",
+      "time": "鍏ㄥぉ",
+      "rarity": "鏅€?,
+      "icon": "馃敟",
+      "description": "鐏郴鍒濆绮剧伒锛屾敾鍑诲姏楂?,
+      "skills": ["鐏嫍", "鐏劙鍐插嚮", "鐑堢劙鎷?, "澶х伀鐞?],
+      "stats": { "hp": 80, "attack": 95, "defense": 60, "speed": 85 }
+    },
+    {
+      "id": 2,
+      "name": "姘磋摑钃?,
+      "types": ["water"],
+      "location": "姘存櫠婀?,
+      "time": "鍏ㄥぉ",
+      "rarity": "鏅€?,
+      "icon": "馃挧",
+      "description": "姘寸郴鍒濆绮剧伒锛岄槻寰″姏寮?,
+      "skills": ["姘存灙", "姘存场", "姘存祦鍠峰皠", "姘存尝鏈?],
+      "stats": { "hp": 95, "attack": 60, "defense": 90, "speed": 70 }
+    },
+    {
+      "id": 3,
+      "name": "鍠靛柕",
+      "types": ["grass"],
+      "location": "闈掗潚鑽夊師",
+      "time": "鍏ㄥぉ",
+      "rarity": "鏅€?,
+      "icon": "馃尶",
+      "description": "鑽夌郴鍒濆绮剧伒锛屽洖澶嶈兘鍔涘己",
+      "skills": ["绉嶅瓙鐐稿脊", "鍏夊悎浣滅敤", "钘ら灜", "鍙跺垉"],
+      "stats": { "hp": 85, "attack": 70, "defense": 75, "speed": 80 }
+    },
+    {
+      "id": 4,
+      "name": "闇归洺鐞?,
+      "types": ["electric"],
+      "location": "闆烽福宄¤胺",
+      "time": "闆ㄥぉ",
+      "rarity": "绋€鏈?,
+      "icon": "鈿?,
+      "description": "鐢电郴绋€鏈夌簿鐏碉紝閫熷害鏋佸揩",
+      "skills": ["鐢靛嚮", "鍗佷竾浼忕壒", "闆风數鎷?, "鎵撻浄"],
+      "stats": { "hp": 70, "attack": 85, "defense": 55, "speed": 110 }
+    },
+    {
+      "id": 5,
+      "name": "涓婂彜鎴橀緳",
+      "types": ["dragon"],
+      "location": "榫欒剦灞辫剦",
+      "time": "澶滄櫄",
+      "rarity": "鍙茶瘲",
+      "icon": "馃惒",
+      "description": "榫欑郴鍙茶瘲绮剧伒锛岀患鍚堝疄鍔涘己",
+      "skills": ["榫欑埅", "榫欎箣鎬?, "榫欓碁瀹堟姢", "榫欎箣娉㈠姩"],
+      "stats": { "hp": 100, "attack": 110, "defense": 85, "speed": 75 }
+    },
+    {
+      "id": 6,
+      "name": "鍐伴緳鐜?,
+      "types": ["ice", "dragon"],
+      "location": "鍐板皝闆師",
+      "time": "闆ぉ",
+      "rarity": "鍙茶瘲",
+      "icon": "鉂勶笍",
+      "description": "鍐伴緳鍙屽睘鎬э紝鎺у満鑳藉姏寮?,
+      "skills": ["鍐板喕鐗?, "鏆撮闆?, "榫欎箣鑸?, "缁濆闆跺害"],
+      "stats": { "hp": 90, "attack": 95, "defense": 90, "speed": 70 }
+    },
+    {
+      "id": 7,
+      "name": "鐑堢伀鎴樼",
+      "types": ["fire"],
+      "location": "鐔斿博鏍稿績",
+      "time": "鍏ㄥぉ",
+      "rarity": "浼犺",
+      "icon": "馃敟",
+      "description": "鐏郴浼犺绮剧伒锛岀垎鍙戜激瀹虫瀬楂?,
+      "skills": ["鐏劙婕╂丁", "澶у瓧鐖?, "鐑堢劙鍐查攱", "绁炲湥涔嬬伀"],
+      "stats": { "hp": 85, "attack": 130, "defense": 70, "speed": 95 }
+    },
+    {
+      "id": 8,
+      "name": "娣辨捣闇镐富",
+      "types": ["water"],
+      "location": "娣辨捣閬楄抗",
+      "time": "澶滄櫄",
+      "rarity": "鍙茶瘲",
+      "icon": "馃寠",
+      "description": "姘寸郴鍙茶瘲绮剧伒锛岃閲忔瀬楂?,
+      "skills": ["姘寸偖", "娴峰暩", "娼滄按", "娣辨捣閲嶅帇"],
+      "stats": { "hp": 120, "attack": 85, "defense": 95, "speed": 50 }
+    },
+    {
+      "id": 9,
+      "name": "妫灄瀹堟姢鑰?,
+      "types": ["grass"],
+      "location": "鍙ゆ爲妫灄",
+      "time": "鐧藉ぉ",
+      "rarity": "绋€鏈?,
+      "icon": "馃尦",
+      "description": "鑽夌郴绋€鏈夌簿鐏碉紝鎿呴暱杈呭姪",
+      "skills": ["瀵勭敓绉嶅瓙", "娌绘剤娉㈠姩", "妫灄瀹堟姢", "鑷劧涔嬪姏"],
+      "stats": { "hp": 100, "attack": 65, "defense": 85, "speed": 65 }
+    },
+    {
+      "id": 10,
+      "name": "闆烽渾鐙帇",
+      "types": ["electric"],
+      "location": "闆烽渾楂樺師",
+      "time": "闆锋毚",
+      "rarity": "鍙茶瘲",
+      "icon": "馃",
+      "description": "鐢电郴鍙茶瘲绮剧伒锛岀墿鐞嗘敾鍑诲己",
+      "skills": ["闆风數鐗?, "鐤媯浼忕壒", "闆风數閾犵敳", "闆风涔嬫€?],
+      "stats": { "hp": 80, "attack": 115, "defense": 70, "speed": 100 }
+    },
+    {
+      "id": 11,
+      "name": "鏈堝奖绮剧伒",
+      "types": ["dark"],
+      "location": "鏆楀奖娌兼辰",
+      "time": "澶滄櫄",
+      "rarity": "绋€鏈?,
+      "icon": "馃寵",
+      "description": "鏆楃郴绋€鏈夌簿鐏碉紝鎿呴暱鍓婂急",
+      "skills": ["鏆楀奖鐖?, "鎭愭儳瑙嗙嚎", "榛戝榄斿奖", "鏈堜箣璇呭拻"],
+      "stats": { "hp": 75, "attack": 90, "defense": 65, "speed": 95 }
+    },
+    {
+      "id": 12,
+      "name": "鍏変箣澶╀娇",
+      "types": ["light"],
+      "location": "澶╃┖涔嬪煄",
+      "time": "鐧藉ぉ",
+      "rarity": "浼犺",
+      "icon": "鉁?,
+      "description": "鍏夌郴浼犺绮剧伒锛屾渶寮鸿緟鍔?,
+      "skills": ["鍦ｅ厜", "澶╀娇绁濈", "鍏変箣澹?, "绁炲湥瑁佸喅"],
+      "stats": { "hp": 90, "attack": 75, "defense": 100, "speed": 85 }
+    }
+  ],
+  "teams": [
+    {
+      "id": "beginner",
+      "name": "鏂版墜寮€鑽掗槦",
+      "description": "寰′笁瀹剁粍鍚堬紝灞炴€т簰琛ワ紝鍓嶆湡鎺ㄥ浘鏃犲帇鍔?,
+      "pets": [
+        { "name": "鐏姳", "role": "鐏郴杈撳嚭", "icon": "馃敟" },
+        { "name": "姘磋摑钃?, "role": "姘寸郴鍧﹀厠", "icon": "馃挧" },
+        { "name": "鍠靛柕", "role": "鑽夌郴杈呭姪", "icon": "馃尶" }
+      ]
+    },
+    {
+      "id": "pvp",
+      "name": "PVP绔炴妧闃?,
+      "description": "涓婂彜鎴橀緳楂樻敾楂樿锛屽啺榫欑帇鎺у満鍑忛€燂紝闇归洺鐞冨厛鎵嬫敹鍓?,
+      "pets": [
+        { "name": "涓婂彜鎴橀緳", "role": "榫欑郴鏍稿績", "icon": "馃惒" },
+        { "name": "鍐伴緳鐜?, "role": "鍐扮郴鎺у満", "icon": "鉂勶笍" },
+        { "name": "闇归洺鐞?, "role": "鐢电郴閫熸敾", "icon": "鈿? }
+      ]
+    },
+    {
+      "id": "boss",
+      "name": "BOSS鎸戞垬闃?,
+      "description": "閽堝BOSS楂樿閲忚璁★紝鏈堝奖绮剧伒鍏堟墜涓婂噺闃诧紝鐑堢伀鎴樼鐖嗗彂杈撳嚭",
+      "pets": [
+        { "name": "鐑堢伀鎴樼", "role": "鐏郴鐖嗗彂", "icon": "馃敟" },
+        { "name": "鏈堝奖绮剧伒", "role": "鏆楃郴鍓婂急", "icon": "馃寵" },
+        { "name": "鍏変箣澶╀娇", "role": "鍏夌郴杈呭姪", "icon": "鉁? }
+      ]
+    }
+  ],
+  "locations": [
+    { "name": "鐑堢劙鐏北", "description": "鐏郴绮剧伒鑱氶泦鍦帮紝娓╁害鏋侀珮", "difficulty": "绠€鍗? },
+    { "name": "姘存櫠婀?, "description": "娓呮緢瑙佸簳鐨勬箹娉婏紝姘寸郴绮剧伒瀹跺洯", "difficulty": "绠€鍗? },
+    { "name": "闈掗潚鑽夊師", "description": "骞块様鐨勮崏鍘燂紝鑽夌郴绮剧伒鍑烘病", "difficulty": "绠€鍗? },
+    { "name": "闆烽福宄¤胺", "description": "甯稿勾闆风數浜ゅ姞锛岀數绯荤簿鐏垫椿璺?, "difficulty": "涓瓑" },
+    { "name": "榫欒剦灞辫剦", "description": "鍙よ€佺殑灞辫剦锛屼紶璇存湁榫欐棌鏍栨伅", "difficulty": "鍥伴毦" },
+    { "name": "鍐板皝闆師", "description": "鏋佸瘨涔嬪湴锛屽啺绯荤簿鐏电殑棰嗗湴", "difficulty": "鍥伴毦" },
+    { "name": "鐔斿博鏍稿績", "description": "鐏北鏈€娣卞锛屼紶璇寸骇鐏郴绮剧伒鍑烘病", "difficulty": "鏋侀毦" },
+    { "name": "娣辨捣閬楄抗", "description": "娌夋病鐨勫彜浠ｅ煄甯傦紝绁炵姘寸郴绮剧伒", "difficulty": "鍥伴毦" },
+    { "name": "鍙ゆ爲妫灄", "description": "鍗冨勾鍙ゆ爲鐜粫锛岃崏绯荤簿鐏靛湥鍦?, "difficulty": "涓瓑" },
+    { "name": "闆烽渾楂樺師", "description": "楂樺師涓婄殑闆锋毚鍖猴紝鐢电郴鐜嬭€呴鍦?, "difficulty": "鍥伴毦" },
+    { "name": "鏆楀奖娌兼辰", "description": "闃存殫娼箍鐨勬布娉斤紝鏆楃郴绮剧伒钘忚韩", "difficulty": "涓瓑" },
+    { "name": "澶╃┖涔嬪煄", "description": "婕傛诞鍦ㄤ簯绔殑鍙ゅ煄锛屽厜绯荤簿鐏靛眳鎵€", "difficulty": "鏋侀毦" }
+  ],
+  "tips": [
+    { "title": "灞炴€ч鍒?, "content": "鏍规嵁瀵规墜棣栧彂绮剧伒棰勫垽闃靛锛屾彁鍓嶅垏鎹㈠厠鍒跺睘鎬?, "scene": "寮€灞€闃舵" },
+    { "title": "閫熷害绾挎帶鍒?, "content": "鍒╃敤閫熷害蹇殑绮剧伒鍏堟墜鎺у満鎴栬緭鍑?, "scene": "鍏ㄥ満閫傜敤" },
+    { "title": "娈嬭鏀跺壊", "content": "淇濈暀楂樼垎鍙戞妧鑳斤紝绛夊鎵嬫畫琛€鏃朵竴鍑诲繀鏉€", "scene": "涓悗鐩? },
+    { "title": "鑱旈槻浣撶郴", "content": "鍒╃敤灞炴€ф姉鎬т簰鐩稿垏鎹紝娑堣€楀鎵婸P鍊?, "scene": "鎸佷箙鎴? }
+  ],
+  "typeChart": {
+    "fire": { "strong": ["grass"], "weak": ["water"], "resist": ["fire", "grass", "ice"], "vulnerable": ["water", "ground", "rock"] },
+    "water": { "strong": ["fire"], "weak": ["grass", "electric"], "resist": ["fire", "water", "ice"], "vulnerable": ["grass", "electric"] },
+    "grass": { "strong": ["water"], "weak": ["fire", "ice"], "resist": ["water", "grass", "electric"], "vulnerable": ["fire", "ice", "poison"] },
+    "electric": { "strong": ["water"], "weak": ["ground"], "resist": ["electric", "flying"], "vulnerable": ["ground"] },
+    "ice": { "strong": ["grass", "dragon"], "weak": ["fire"], "resist": ["ice"], "vulnerable": ["fire", "fighting", "rock"] },
+    "dragon": { "strong": ["dragon"], "weak": ["ice", "dragon"], "resist": ["fire", "water", "grass", "electric"], "vulnerable": ["ice", "dragon", "fairy"] }
+  }
+}

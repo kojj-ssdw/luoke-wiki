@@ -1,0 +1,646 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>娲涘厠鐜嬪浗锛氫笘鐣?- 绮剧伒瀵规垬鏀荤暐绔?/title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        :root {
+            --primary: #6B4EE6;
+            --primary-dark: #5A3FD1;
+            --accent: #00D9C0;
+            --bg-dark: #1A1A2E;
+            --bg-card: #16213E;
+            --text: #EAEAEA;
+            --text-muted: #A0A0A0;
+            --border: #2D3561;
+            --loading: #FFD700;
+        }
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Noto Sans SC', sans-serif;
+            background: var(--bg-dark);
+            color: var(--text);
+            line-height: 1.6;
+        }
+        .loading {
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: var(--bg-dark);
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            z-index: 9999;
+            transition: opacity 0.5s;
+        }
+        .loading.hidden { opacity: 0; pointer-events: none; }
+        .loading-spinner {
+            width: 60px; height: 60px;
+            border: 4px solid var(--border);
+            border-top-color: var(--primary);
+            border-radius: 50%;
+            animation: spin 1s linear infinite;
+        }
+        @keyframes spin { to { transform: rotate(360deg); } }
+        .error-message {
+            background: rgba(255, 107, 107, 0.2);
+            border: 1px solid #FF6B6B;
+            padding: 1rem;
+            border-radius: 10px;
+            margin: 1rem 0;
+            text-align: center;
+        }
+        .navbar {
+            background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+            padding: 1rem 2rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+        .logo { font-size: 1.5rem; font-weight: 700; }
+        .refresh-btn {
+            background: rgba(255,255,255,0.2);
+            border: none;
+            padding: 8px 16px;
+            border-radius: 20px;
+            color: white;
+            cursor: pointer;
+            transition: background 0.3s;
+        }
+        .refresh-btn:hover { background: rgba(255,255,255,0.3); }
+        .last-update { font-size: 0.8rem; opacity: 0.8; margin-left: 1rem; }
+        .hero {
+            background: linear-gradient(135deg, var(--bg-dark) 0%, #252545 100%);
+            padding: 4rem 2rem;
+            text-align: center;
+        }
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 1rem;
+            background: linear-gradient(135deg, #fff 0%, var(--accent) 100%);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 2rem;
+            display: grid;
+            grid-template-columns: 250px 1fr;
+            gap: 2rem;
+        }
+        .sidebar-section {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1rem;
+            border: 1px solid var(--border);
+        }
+        .content {
+            background: var(--bg-card);
+            border-radius: 15px;
+            padding: 2rem;
+            border: 1px solid var(--border);
+        }
+        .pet-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(180px, 1fr));
+            gap: 1.5rem;
+        }
+        .pet-card {
+            background: linear-gradient(135deg, rgba(107, 78, 230, 0.1) 0%, rgba(0, 217, 192, 0.05) 100%);
+            border-radius: 15px;
+            padding: 1.5rem;
+            border: 1px solid var(--border);
+            text-align: center;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        .pet-card:hover {
+            transform: translateY(-5px);
+            border-color: var(--primary);
+        }
+        .pet-icon {
+            width: 80px; height: 80px;
+            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+            border-radius: 50%;
+            margin: 0 auto 1rem;
+            display: flex; align-items: center; justify-content: center;
+            font-size: 2.5rem;
+        }
+        .type-badge {
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.75rem;
+            margin: 0 2px;
+        }
+        .type-fire { background: #FF6B6B; }
+        .type-water { background: #4ECDC4; }
+        .type-grass { background: #95E1D3; color: #2D3436; }
+        .type-electric { background: #FFE66D; color: #2D3436; }
+        .type-ice { background: #A8E6CF; color: #2D3436; }
+        .type-dragon { background: #9B59B6; }
+        .type-dark { background: #636E72; }
+        .type-light { background: #FDCB6E; color: #2D3436; }
+        .data-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 1rem;
+        }
+        .data-table th, .data-table td {
+            padding: 1rem;
+            text-align: left;
+            border-bottom: 1px solid var(--border);
+        }
+        .data-table th {
+            background: rgba(107, 78, 230, 0.1);
+            color: var(--primary);
+        }
+        .tabs {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 2rem;
+            border-bottom: 2px solid var(--border);
+            padding-bottom: 1rem;
+            flex-wrap: wrap;
+        }
+        .tab {
+            padding: 10px 20px;
+            background: none;
+            border: none;
+            color: var(--text-muted);
+            cursor: pointer;
+            border-radius: 8px;
+        }
+        .tab.active {
+            background: var(--primary);
+            color: white;
+        }
+        .tab-content { display: none; }
+        .tab-content.active { display: block; }
+        .team-build {
+            background: rgba(255, 107, 157, 0.1);
+            border-radius: 15px;
+            padding: 1.5rem;
+            margin-bottom: 1.5rem;
+            border: 1px solid var(--border);
+        }
+        .team-pets { display: flex; gap: 1rem; flex-wrap: wrap; margin: 1rem 0; }
+        .team-pet {
+            background: var(--bg-dark);
+            padding: 10px 15px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+        .stat-bar {
+            display: flex;
+            align-items: center;
+            margin: 5px 0;
+            font-size: 0.85rem;
+        }
+        .stat-bar span { width: 40px; }
+        .stat-bar .bar {
+            flex: 1;
+            height: 8px;
+            background: var(--border);
+            border-radius: 4px;
+            overflow: hidden;
+            margin: 0 10px;
+        }
+        .stat-bar .fill {
+            height: 100%;
+            background: linear-gradient(90deg, var(--primary), var(--accent));
+            border-radius: 4px;
+            transition: width 0.3s;
+        }
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; right: 0; bottom: 0;
+            background: rgba(0,0,0,0.8);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            padding: 2rem;
+        }
+        .modal.active { display: flex; }
+        .modal-content {
+            background: var(--bg-card);
+            border-radius: 20px;
+            padding: 2rem;
+            max-width: 500px;
+            width: 100%;
+            max-height: 80vh;
+            overflow-y: auto;
+            border: 2px solid var(--primary);
+        }
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 1.5rem;
+        }
+        .close-btn {
+            background: none;
+            border: none;
+            color: var(--text);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+        .skill-list {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 0.5rem;
+        }
+        .skill-tag {
+            background: rgba(107, 78, 230, 0.3);
+            padding: 5px 12px;
+            border-radius: 15px;
+            font-size: 0.85rem;
+        }
+        @media (max-width: 1024px) {
+            .main-container { grid-template-columns: 1fr; }
+            .pet-grid { grid-template-columns: repeat(2, 1fr); }
+            .hero h1 { font-size: 2rem; }
+        }
+    </style>
+</head>
+<body>
+    <div class="loading" id="loading">
+        <div class="loading-spinner"></div>
+        <p style="margin-top: 1rem; color: var(--text-muted);">鍔犺浇鏁版嵁涓?..</p>
+    </div>
+
+    <nav class="navbar">
+        <div class="nav-container">
+            <div class="logo">馃悏 娲涘厠鐜嬪浗锛氫笘鐣屾敾鐣ョ珯</div>
+            <div style="display: flex; align-items: center;">
+                <span class="last-update" id="lastUpdate"></span>
+                <button class="refresh-btn" onclick="loadData()">馃攧 鍒锋柊鏁版嵁</button>
+            </div>
+        </div>
+    </nav>
+
+    <section class="hero">
+        <h1>鎺㈢储娲涘厠鐜嬪浗锛氫笘鐣?/h1>
+        <p style="color: var(--text-muted);">鏁版嵁鍙仈缃戞洿鏂帮紝闅忔椂鑾峰彇鏈€鏂版敾鐣?/p>
+    </section>
+
+    <div class="main-container">
+        <aside class="sidebar">
+            <div class="sidebar-section">
+                <h3>馃搵 蹇€熷鑸?/h3>
+                <ul style="list-style: none; margin-top: 1rem;" id="typeMenu">
+                    <li style="margin: 0.5rem 0;"><a href="#" onclick="filterPets('all')" style="color: var(--text);">鍏ㄩ儴绮剧伒</a></li>
+                </ul>
+            </div>
+            <div class="sidebar-section">
+                <h3>馃弳 鐑棬闃靛</h3>
+                <ul style="list-style: none; margin-top: 1rem;" id="teamMenu"></ul>
+            </div>
+        </aside>
+
+        <main class="content" id="mainContent">
+            <div class="error-message" id="errorMessage" style="display: none;">
+                鏁版嵁鍔犺浇澶辫触锛岃妫€鏌ョ綉缁滆繛鎺ユ垨鍒锋柊椤甸潰閲嶈瘯
+            </div>
+
+            <div class="tabs">
+                <button class="tab active" onclick="switchTab(this, 'pets')">馃 绮剧伒鍥鹃壌</button>
+                <button class="tab" onclick="switchTab(this, 'locations')">馃搷 鍒锋柊鍦扮偣</button>
+                <button class="tab" onclick="switchTab(this, 'typeChart')">鈿栵笍 灞炴€у厠鍒?/button>
+                <button class="tab" onclick="switchTab(this, 'pvp')">鈿旓笍 瀵规垬鏀荤暐</button>
+                <button class="tab" onclick="switchTab(this, 'teams')">馃懃 闃靛鎺ㄨ崘</button>
+            </div>
+
+            <div id="pets" class="tab-content active">
+                <h2 style="margin-bottom: 1.5rem;">馃 绮剧伒鍥鹃壌</h2>
+                <div class="pet-grid" id="petGrid"></div>
+            </div>
+
+            <div id="locations" class="tab-content">
+                <h2 style="margin-bottom: 1.5rem;">馃搷 鍦板浘鍖哄煙</h2>
+                <div id="locationsList"></div>
+            </div>
+
+            <div id="typeChart" class="tab-content">
+                <h2 style="margin-bottom: 1.5rem;">鈿栵笍 灞炴€у厠鍒惰〃</h2>
+                <div id="typeChartContent"></div>
+            </div>
+
+            <div id="pvp" class="tab-content">
+                <h2 style="margin-bottom: 1.5rem;">鈿旓笍 瀵规垬鏀荤暐</h2>
+                <div id="tipsContent"></div>
+            </div>
+
+            <div id="teams" class="tab-content">
+                <h2 style="margin-bottom: 1.5rem;">馃懃 鎺ㄨ崘闃靛</h2>
+                <div id="teamsContent"></div>
+            </div>
+        </main>
+    </div>
+
+    <!-- 绮剧伒璇︽儏寮圭獥 -->
+    <div class="modal" id="petModal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h2 id="modalTitle">绮剧伒璇︽儏</h2>
+                <button class="close-btn" onclick="closeModal()">&times;</button>
+            </div>
+            <div id="modalBody"></div>
+        </div>
+    </div>
+
+    <script>
+        let gameData = null;
+        const typeNames = { 
+            fire: '鐏?, water: '姘?, grass: '鑽?, electric: '鐢?, 
+            ice: '鍐?, dragon: '榫?, dark: '鏆?, light: '鍏?,
+            ground: '鍦伴潰', rock: '宀╃煶', flying: '椋炶', poison: '姣?,
+            fighting: '鏍兼枟', fairy: '濡栫簿'
+        };
+        const rarityColors = { '鏅€?: '#95A5A6', '绋€鏈?: '#3498DB', '鍙茶瘲': '#9B59B6', '浼犺': '#F39C12' };
+
+        // 鍔犺浇鏁版嵁
+        async function loadData() {
+            const loading = document.getElementById('loading');
+            const errorMsg = document.getElementById('errorMessage');
+            
+            loading.classList.remove('hidden');
+            errorMsg.style.display = 'none';
+            
+            try {
+                // 娣诲姞鏃堕棿鎴抽槻姝㈢紦瀛?                const timestamp = new Date().getTime();
+                const response = await fetch(`data.json?t=${timestamp}`);
+                
+                if (!response.ok) throw new Error('Network response was not ok');
+                
+                gameData = await response.json();
+                
+                // 鏇存柊鏈€鍚庢洿鏂版椂闂?                document.getElementById('lastUpdate').textContent = 
+                    '鏇存柊浜? ' + new Date().toLocaleString('zh-CN', { 
+                        month: 'short', day: 'numeric', hour: '2-digit', minute: '2-digit' 
+                    });
+                
+                // 娓叉煋鎵€鏈夊唴瀹?                renderTypeMenu();
+                renderTeamMenu();
+                renderPets();
+                renderLocations();
+                renderTypeChart();
+                renderTips();
+                renderTeams();
+                
+                // 淇濆瓨鍒版湰鍦板瓨鍌ㄤ綔涓哄浠?                localStorage.setItem('luokeData', JSON.stringify(gameData));
+                localStorage.setItem('luokeDataTime', Date.now());
+                
+            } catch (error) {
+                console.error('鍔犺浇澶辫触:', error);
+                
+                // 灏濊瘯浠庢湰鍦板瓨鍌ㄥ姞杞?                const cached = localStorage.getItem('luokeData');
+                if (cached) {
+                    gameData = JSON.parse(cached);
+                    renderAll();
+                    errorMsg.innerHTML = '鈿狅笍 浣跨敤缂撳瓨鏁版嵁锛堢绾挎ā寮忥級<br><small>涓婃鏇存柊: ' + 
+                        new Date(parseInt(localStorage.getItem('luokeDataTime'))).toLocaleString() + '</small>';
+                    errorMsg.style.display = 'block';
+                } else {
+                    errorMsg.textContent = '鏁版嵁鍔犺浇澶辫触锛岃妫€鏌ョ綉缁滆繛鎺ユ垨鍒锋柊椤甸潰閲嶈瘯';
+                    errorMsg.style.display = 'block';
+                }
+            } finally {
+                setTimeout(() => loading.classList.add('hidden'), 500);
+            }
+        }
+
+        function renderAll() {
+            renderTypeMenu();
+            renderTeamMenu();
+            renderPets();
+            renderLocations();
+            renderTypeChart();
+            renderTips();
+            renderTeams();
+        }
+
+        // 娓叉煋灞炴€ц彍鍗?        function renderTypeMenu() {
+            const menu = document.getElementById('typeMenu');
+            const types = [...new Set(gameData.pets.flatMap(p => p.types))];
+            
+            menu.innerHTML = '<li style="margin: 0.5rem 0;"><a href="#" onclick="filterPets(\'all\')" style="color: var(--text);">鍏ㄩ儴绮剧伒</a></li>' +
+                types.map(t => `<li style="margin: 0.5rem 0;"><a href="#" onclick="filterPets('${t}')" style="color: var(--text-muted);">${typeNames[t] || t}绯?/a></li>`).join('');
+        }
+
+        // 娓叉煋闃靛鑿滃崟
+        function renderTeamMenu() {
+            const menu = document.getElementById('teamMenu');
+            menu.innerHTML = gameData.teams.map(t => 
+                `<li style="margin: 0.5rem 0;"><a href="#" onclick="showTeamDetail('${t.id}')" style="color: var(--text-muted);">${t.name}</a></li>`
+            ).join('');
+        }
+
+        // 娓叉煋绮剧伒
+        function renderPets(filter = 'all') {
+            const grid = document.getElementById('petGrid');
+            const filtered = filter === 'all' ? gameData.pets : gameData.pets.filter(p => p.types.includes(filter));
+            
+            grid.innerHTML = filtered.map(pet => `
+                <div class="pet-card" onclick="showPetDetail(${pet.id})">
+                    <div class="pet-icon">${pet.icon}</div>
+                    <div style="font-weight: 700; margin-bottom: 0.5rem;">${pet.name}</div>
+                    <div style="margin-bottom: 0.5rem;">
+                        ${pet.types.map(t => `<span class="type-badge type-${t}">${typeNames[t]}</span>`).join('')}
+                    </div>
+                    <div style="font-size: 0.85rem; color: var(--text-muted);">馃搷 ${pet.location}</div>
+                    <div style="font-size: 0.8rem; color: ${rarityColors[pet.rarity]}; margin-top: 5px;">${pet.rarity}</div>
+                </div>
+            `).join('');
+        }
+
+        // 娓叉煋鍦扮偣
+        function renderLocations() {
+            const container = document.getElementById('locationsList');
+            container.innerHTML = `
+                <table class="data-table">
+                    <thead>
+                        <tr><th>鍦扮偣</th><th>鎻忚堪</th><th>闅惧害</th><th>绮剧伒</th></tr>
+                    </thead>
+                    <tbody>
+                        ${gameData.locations.map(loc => {
+                            const petsHere = gameData.pets.filter(p => p.location === loc.name);
+                            return `
+                                <tr>
+                                    <td><strong>${loc.name}</strong></td>
+                                    <td>${loc.description}</td>
+                                    <td>${loc.difficulty}</td>
+                                    <td>${petsHere.map(p => p.icon).join(' ')}</td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // 娓叉煋灞炴€у厠鍒惰〃
+        function renderTypeChart() {
+            const container = document.getElementById('typeChartContent');
+            const types = Object.keys(gameData.typeChart);
+            
+            container.innerHTML = `
+                <table class="data-table">
+                    <thead>
+                        <tr><th>灞炴€?/th><th>鍏嬪埗</th><th>琚厠鍒?/th><th>鎶垫姉</th><th>寮辩偣</th></tr>
+                    </thead>
+                    <tbody>
+                        ${types.map(t => {
+                            const chart = gameData.typeChart[t];
+                            return `
+                                <tr>
+                                    <td><span class="type-badge type-${t}">${typeNames[t]}</span></td>
+                                    <td>${chart.strong.map(x => typeNames[x]).join(', ') || '-'}</td>
+                                    <td>${chart.weak.map(x => typeNames[x]).join(', ') || '-'}</td>
+                                    <td>${chart.resist.map(x => typeNames[x]).join(', ') || '-'}</td>
+                                    <td>${chart.vulnerable.map(x => typeNames[x]).join(', ') || '-'}</td>
+                                </tr>
+                            `;
+                        }).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // 娓叉煋鎶€宸?        function renderTips() {
+            const container = document.getElementById('tipsContent');
+            container.innerHTML = `
+                <div class="team-build">
+                    <h3>馃幆 瀵规垬鏈哄埗</h3>
+                    <p style="color: var(--text-muted);">3v3杞崲鍒讹紝鍚堢悊鍒╃敤灞炴€у厠鍒跺叧绯?/p>
+                </div>
+                <table class="data-table">
+                    <thead>
+                        <tr><th>鎶€宸?/th><th>璇存槑</th><th>閫傜敤鍦烘櫙</th></tr>
+                    </thead>
+                    <tbody>
+                        ${gameData.tips.map(tip => `
+                            <tr>
+                                <td><strong>${tip.title}</strong></td>
+                                <td>${tip.content}</td>
+                                <td>${tip.scene}</td>
+                            </tr>
+                        `).join('')}
+                    </tbody>
+                </table>
+            `;
+        }
+
+        // 娓叉煋闃靛
+        function renderTeams() {
+            const container = document.getElementById('teamsContent');
+            container.innerHTML = gameData.teams.map(team => `
+                <div class="team-build" id="team-${team.id}">
+                    <h3>${team.name}</h3>
+                    <div class="team-pets">
+                        ${team.pets.map(p => `
+                            <div class="team-pet">
+                                <span style="font-size: 1.5rem;">${p.icon}</span>
+                                <div>
+                                    <div style="font-weight: 600;">${p.name}</div>
+                                    <small style="color: var(--text-muted);">${p.role}</small>
+                                </div>
+                            </div>
+                        `).join('')}
+                    </div>
+                    <p style="color: var(--text-muted);">${team.description}</p>
+                </div>
+            `).join('');
+        }
+
+        // 鏄剧ず绮剧伒璇︽儏
+        function showPetDetail(id) {
+            const pet = gameData.pets.find(p => p.id === id);
+            if (!pet) return;
+            
+            document.getElementById('modalTitle').innerHTML = `${pet.icon} ${pet.name}`;
+            document.getElementById('modalBody').innerHTML = `
+                <div style="text-align: center; margin-bottom: 1.5rem;">
+                    <div style="font-size: 4rem; margin-bottom: 1rem;">${pet.icon}</div>
+                    <div style="margin-bottom: 0.5rem;">
+                        ${pet.types.map(t => `<span class="type-badge type-${t}">${typeNames[t]}</span>`).join('')}
+                        <span style="color: ${rarityColors[pet.rarity]}; margin-left: 10px; font-weight: 600;">${pet.rarity}</span>
+                    </div>
+                    <p style="color: var(--text-muted);">${pet.description}</p>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="margin-bottom: 0.5rem;">馃搷 鍑虹幇淇℃伅</h4>
+                    <p>鍦扮偣: ${pet.location}</p>
+                    <p>鏃堕棿: ${pet.time}</p>
+                </div>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <h4 style="margin-bottom: 0.5rem;">馃搳 绉嶆棌鍊?/h4>
+                    <div class="stat-bar"><span>HP</span><div class="bar"><div class="fill" style="width: ${pet.stats.hp}%"></div></div><span>${pet.stats.hp}</span></div>
+                    <div class="stat-bar"><span>鏀诲嚮</span><div class="bar"><div class="fill" style="width: ${pet.stats.attack}%"></div></div><span>${pet.stats.attack}</span></div>
+                    <div class="stat-bar"><span>闃插尽</span><div class="bar"><div class="fill" style="width: ${pet.stats.defense}%"></div></div><span>${pet.stats.defense}</span></div>
+                    <div class="stat-bar"><span>閫熷害</span><div class="bar"><div class="fill" style="width: ${pet.stats.speed}%"></div></div><span>${pet.stats.speed}</span></div>
+                </div>
+                
+                <div>
+                    <h4 style="margin-bottom: 0.5rem;">鈿旓笍 鎶€鑳?/h4>
+                    <div class="skill-list">
+                        ${pet.skills.map(s => `<span class="skill-tag">${s}</span>`).join('')}
+                    </div>
+                </div>
+            `;
+            
+            document.getElementById('petModal').classList.add('active');
+        }
+
+        function closeModal() {
+            document.getElementById('petModal').classList.remove('active');
+        }
+
+        function filterPets(type) {
+            renderPets(type);
+            switchTab(document.querySelector('.tab'), 'pets');
+            return false;
+        }
+
+        function showTeamDetail(teamId) {
+            switchTab(document.querySelectorAll('.tab')[4], 'teams');
+            setTimeout(() => {
+                document.getElementById(`team-${teamId}`).scrollIntoView({ behavior: 'smooth' });
+            }, 100);
+            return false;
+        }
+
+        function switchTab(btn, tabId) {
+            document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+            document.querySelectorAll('.tab-content').forEach(c => c.classList.remove('active'));
+            btn.classList.add('active');
+            document.getElementById(tabId).classList.add('active');
+        }
+
+        // 鐐瑰嚮寮圭獥澶栭儴鍏抽棴
+        document.getElementById('petModal').addEventListener('click', (e) => {
+            if (e.target.id === 'petModal') closeModal();
+        });
+
+        // 鍒濆鍖栧姞杞?        loadData();
+
+        // 姣?鍒嗛挓鑷姩鍒锋柊
+        setInterval(loadData, 5 * 60 * 1000);
+    </script>
+</body>
+</html>
